@@ -101,5 +101,19 @@
   (let ((msg '(:namespace "playback" :method "rewind" :requestID 1)))
     (websocket-send-text google-play-music--ws (json-encode msg))))
 
+(defun google-play-music--set-rating (rating)
+  (let ((msg (list :namespace "rating" :method "setRating" :arguments (vector rating))))
+	(websocket-send-text google-play-music--ws (json-encode msg))))
+
+(defun google-play-music-thumbs-up()
+  "Set the rating to 5"
+  (interactive)
+  (google-play-music--set-rating "5"))
+
+(defun google-play-music-thumbs-down()
+  "Set the rating to 1"
+  (interactive)
+  (google-play-music--set-rating "1"))
+
 (provide 'google-play-music)
 ;;; google-play-music.el ends here
