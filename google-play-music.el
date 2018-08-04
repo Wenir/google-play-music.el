@@ -6,10 +6,6 @@
 ;; Keywords: extensions
 ;; Version: 0.1
 
-;;; Commentary:
-
-;; hahaha
-
 ;;; Code:
 (require 'websocket)
 (require 'json)
