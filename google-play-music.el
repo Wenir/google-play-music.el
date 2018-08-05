@@ -115,5 +115,11 @@
   (interactive)
   (google-play-music--set-rating "1"))
 
+(defun google-play-music-reset-rating ()
+  "Set the rating to 0"
+  (interactive)
+  (let ((msg (list :namespace "rating" :method "resetRating" :requestID 1)))
+	(websocket-send-text google-play-music--ws (json-encode msg))))
+
 (provide 'google-play-music)
 ;;; google-play-music.el ends here
