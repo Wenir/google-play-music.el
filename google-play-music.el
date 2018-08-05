@@ -73,7 +73,7 @@
                      (plist-put msg :arguments '("google-play-music.el")))))
         (websocket-send-text google-play-music--ws (json-encode parg)))))
 
-(defun google-play-music-start()
+(defun google-play-music-connect()
   "make connection to google play music desktop player"
   (interactive)
   (unless (connectp)
@@ -89,13 +89,13 @@
   (let ((msg '(:namespace "playback" :method "playPause" :requestID 1)))
     (websocket-send-text google-play-music--ws (json-encode msg))))
 
-(defun google-play-music-forward()
+(defun google-play-music-next()
   "Play next song"
   (interactive)
   (let ((msg '(:namespace "playback" :method "forward" :requestID 1)))
     (websocket-send-text google-play-music--ws (json-encode msg))))
 
-(defun google-play-music-unwind()
+(defun google-play-music-previous()
   "Rewind to start or previous song"
   (interactive)
   (let ((msg '(:namespace "playback" :method "rewind" :requestID 1)))
